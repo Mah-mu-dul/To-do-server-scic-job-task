@@ -30,15 +30,14 @@ async function run() {
       const cursor = todolist.find(query);
       const todos = await cursor.toArray();
       res.send(todos);
-
-
-// post a task 
-      app.post("/addtodo", async (req, res) => {
-        const task = req.body;
-        const result = await todolist.insertOne(task);
-        res.send(result);
-      });
     });
+    // post a task 
+app.post("/todos", async (req, res) => {
+  const task = req.body;
+  console.log(task);
+  const result = await todolist.insertOne(task);
+  res.send(result);
+});
   } finally {
   }
 }
